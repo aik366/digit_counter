@@ -10,8 +10,8 @@ class App(ctk.CTk):
         self.geometry("+700+400")
         self.title("Счётчик цифр")
 
-        self.label = ctk.CTkLabel(self, text="0", font=("Roboto", 50))
-        self.label.pack(padx=20, pady=50)
+        self.label = ctk.CTkLabel(self, text="0", font=("Roboto", 70))
+        self.label.pack(padx=20, pady=40)
 
         self.button1 = ctk.CTkButton(self, text="Увеличение", width=220, height=50, corner_radius=25, border_width=2,
                                      font=("Roboto", 17), fg_color="#4169E1", hover_color='#6495ED',
