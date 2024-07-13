@@ -19,20 +19,22 @@ class App(ctk.CTk):
                                      command=self.counter_digits)
         self.button1.pack(padx=20, pady=20)
 
-        self.button2 = ctk.CTkButton(self, text="Перезагрузить", width=220, height=50, corner_radius=25, border_width=2,
-                                     font=("Roboto", 17), fg_color="#800000", hover_color='#A52A2A',
-                                     command=self.label_close)
+        self.button2: ctk.CTkButton | None
 
     def random_color(self):
         return "#" + "".join(choices("0123456789ABCDEF", k=6))
 
     def counter_digits(self):
         self.label.configure(text=str(int(self.label.cget("text")) + 1), text_color=self.random_color())
-        self.button2.pack(padx=20, pady=(0, 20))
+        if self.label.cget("text") == "1":
+            self.button2 = ctk.CTkButton(self, text="Перезагрузить", width=220, height=50, corner_radius=25,
+                                         border_width=2, command=self.label_close,
+                                         font=("Roboto", 17), fg_color="#800000", hover_color='#A52A2A')
+            self.button2.pack(padx=20, pady=(0, 20))
 
     def label_close(self):
         self.label.configure(text="0", text_color="white")
-        self.button2.pack_forget()
+        self.button2.destroy()
 
 
 if __name__ == '__main__':
